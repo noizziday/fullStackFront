@@ -1,0 +1,93 @@
+.imgDiv {
+  width: 100%;
+  position: relative;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+.images {
+  width: 100%;
+  opacity: 0.7;
+  margin: 0;
+  padding: 0;
+}
+.welcome {
+  position: absolute;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+  top: 300px;
+  height: 300px;
+}
+.welcomeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #e4cfa9;
+  gap: 142px;
+}
+.privateBtn {
+  border: 2px solid #002939;
+  background-color: #002939;
+  padding: 16px 24px;
+  font-size: 18px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: 0.5s;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.privateBtn:hover {
+  background-color: #e4cfa9;
+  color: #002939;
+}
+.reserveBar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.reserveInp {
+  height: 100%;
+  font-size: 18px;
+  padding: 5px;
+  border-color: transparent;
+  fill-opacity: 0.4;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.reserveInp.search {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 30%;
+  padding-left: 60px;
+  background: url(https://cdn-icons-png.flaticon.com/512/1946/1946488.png)
+    no-repeat scroll 15px 12px;
+  background-size: auto 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.reserveInp.number {
+  background: url(http://cdn.onlinewebfonts.com/svg/img_570334.png) no-repeat
+    scroll 15px 12px;
+  padding-left: 60px;
+  background-size: auto 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 30%;
+}
+.line {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 1px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.innerLine {
+  height: 30px;
+  background-color: grey;
+  width: 1px;
+}
