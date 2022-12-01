@@ -14,8 +14,8 @@ const HomePage = () => {
         </div> */}
         <div className="welcome">
           <div className="welcomeInner">
-            <div style={{ fontSize: "64px" }}>LUXURY GRAND TOWN HOTEL</div>
-            <div style={{ fontSize: "48px" }}>
+            <div className="homeTitle">LUXURY GRAND TOWN HOTEL</div>
+            <div className="secondTitle">
               Bоплощение тишины и покоя в оживленном городе
             </div>
             <div className="reserveBar">

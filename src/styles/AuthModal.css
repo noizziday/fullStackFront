@@ -1,14 +1,15 @@
 .modalBlock {
   background-color: #002939;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
   width: 600px;
-  height: 600px;
+  height: 520px;
   border: none;
+  top: 5%;
   border-radius: 20px;
-  top: 180px;
   transition: ease-in-out 0.5s;
 }
 
@@ -18,11 +19,27 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  height: 60%;
+  height: 80%;
 }
 .loginInp {
   width: 80%;
+  color: #e4cfa9;
+
   height: 50px;
+
+  border: none;
+  border-radius: 10px;
+  padding-left: 60px;
+  text-align: start;
+  background: url(https://icons.veryicon.com/png/o/business/resume-general-icon/e-mail-12.png)
+    no-repeat scroll 15px 12px;
+  background-size: auto 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.usernameInp {
+  width: 80%;
+  height: 50px;
+  color: #e4cfa9;
 
   border: none;
   border-radius: 10px;
@@ -34,6 +51,8 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 .passwordInp {
+  color: #e4cfa9;
+
   width: 80%;
   height: 50px;
   border: none;
@@ -46,17 +65,21 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 .passwordInp::placeholder {
-  color: darkgrey;
+  color: rgb(85, 81, 81);
 }
 .loginInp::placeholder {
-  color: darkgrey;
+  color: rgb(85, 81, 81);
+}
+.usernameInp::placeholder {
+  color: rgb(85, 81, 81);
 }
 .authModule {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 70%;
+  justify-content: space-around;
+  height: 80%;
+  padding-bottom: 50px;
   width: 100%;
 }
 .changeInputs {
@@ -113,12 +136,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 70%;
+  height: 80%;
   width: 100%;
 }
 .secondPasswordInp {
   width: 80%;
-
+  color: #e4cfa9;
   height: 50px;
   border: none;
   border-radius: 10px;
@@ -130,5 +153,44 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 .secondPasswordInp::placeholder {
-  color: darkgrey;
+  color: rgb(85, 81, 81);
+}
+.closeBtn {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+}
+.regBtn {
+  width: 70%;
+  padding: 20px;
+  text-align: center;
+  background-color: #e4cfa9;
+  border: 1px solid #e4cfa9;
+
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.regBtn:hover {
+  background-color: #002939;
+  border: 1px solid #e4cfa9;
+  color: #e4cfa9;
+}
+.loginBtn {
+  width: 70%;
+  padding: 20px;
+  text-align: center;
+  background-color: #e4cfa9;
+  border: 1px solid #e4cfa9;
+
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.loginBtn:hover {
+  background-color: #002939;
+  border: 1px solid #e4cfa9;
+  color: #e4cfa9;
 }
