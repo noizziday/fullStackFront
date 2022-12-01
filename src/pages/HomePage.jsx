@@ -1,16 +1,17 @@
 import React from "react";
 import "../styles/HomePage.css";
+import "../styles/AuthModal.css";
 const HomePage = () => {
   return (
     <div>
       <div>
-        <div className="imgDiv">
+        {/* <div className="imgDiv">
           <img
             src="https://s01.cdn-pegast.net/get/f8/d9/a7/f011c31de122ffc06d653b57bc8e52fbba7a6a9a9da99c96f18d337db0/5c3dec186770c.jpg"
             alt=""
             className="images"
           />
-        </div>
+        </div> */}
         <div className="welcome">
           <div className="welcomeInner">
             <div style={{ fontSize: "64px" }}>LUXURY GRAND TOWN HOTEL</div>
