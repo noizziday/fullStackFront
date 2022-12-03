@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/AuthModal.css";
 import imag from "../media/icons8-close-48.png";
+import { authContext, useAuth } from "../authContext";
 
 const Navbar = () => {
+  const { handleRegister, setError, handleLogin } = useContext(authContext);
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(true);
@@ -16,33 +18,96 @@ const Navbar = () => {
   const [logInpValue, setLogInpValue] = useState("");
   const [passwordInpValue, setPasswordInpValue] = useState("");
 
+  function createUser() {
+    if (
+      !regEmailInpValue.trim() ||
+      !regPasswordInpValue.trim() ||
+      !regSecondPasswordInpValue.trim() ||
+      !regLogInpValue.trim()
+    ) {
+      alert("Some inputs are empty!");
+      return;
+    }
+    let formData = new FormData();
+    formData.append("username", regLogInpValue);
+    formData.append("email", regEmailInpValue);
+    formData.append("password", regPasswordInpValue);
+    formData.append("password_confirm", regSecondPasswordInpValue);
+    handleRegister(formData, navigate);
+    navigate("/");
+    alert("Успешная регистрация!");
+  }
+
+  function loginUser() {
+    if (!logInpValue.trim() || !passwordInpValue.trim()) {
+      alert("Some inputs are empty!");
+      return;
+    }
+    let formData = new FormData();
+    formData.append("email", logInpValue);
+    formData.append("password", passwordInpValue);
+    handleLogin(formData, logInpValue, navigate);
+    alert("Успешный вход!");
+  }
+
+  const logout = () => {
+    localStorage.removeItem("tokens");
+    localStorage.removeItem("email");
+    alert("Вы успешно вышли из аккаунта!");
+    navigate("/");
+  };
+
+  useEffect(() => {
+    setError(false);
+  }, []);
+
   return (
     <div className="navBlock">
-      <div className="navContainer">
-        <div className="navElements">
-          <div className="navElementsLinks" onClick={() => navigate("/")}>
-            Главная
-          </div>
-          <div className="navElementsLinks">Отели</div>
-          <div
-            className="navElementsLinks modal-btn"
-            htmlFor="modal-toggle"
-            onClick={() => {
-              setModal(!modal);
-              setInputs(false);
-            }}>
-            Регистрация
-          </div>
-          <div
-            className="navElementsLinks"
-            onClick={() => {
-              setModal(!modal);
-              setInputs(true);
-            }}>
-            Авторизация
+      {localStorage.email ? (
+        <div className="navContainer">
+          <div className="navElements">
+            <div className="navElementsLinks" onClick={() => navigate("/")}>
+              Главная
+            </div>
+            <div className="navElementsLinks">Отели</div>
+            <div
+              className="navElementsLinks modal-btn"
+              htmlFor="modal-toggle"
+              onClick={() => {
+                logout();
+              }}>
+              Выйти
+            </div>
+          </div>{" "}
+        </div>
+      ) : (
+        <div className="navContainer">
+          <div className="navElements">
+            <div className="navElementsLinks" onClick={() => navigate("/")}>
+              Главная
+            </div>
+            <div className="navElementsLinks">Отели</div>
+            <div
+              className="navElementsLinks modal-btn"
+              htmlFor="modal-toggle"
+              onClick={() => {
+                setModal(!modal);
+                setInputs(false);
+              }}>
+              Регистрация
+            </div>
+            <div
+              className="navElementsLinks"
+              onClick={() => {
+                setModal(!modal);
+                setInputs(true);
+              }}>
+              Авторизация
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
       <div
         style={
           modal
@@ -126,7 +191,9 @@ const Navbar = () => {
                 placeholder="Password"
                 onChange={e => setPasswordInpValue(e.target.value)}
               />
-              <div className="loginBtn">Войти</div>
+              <div className="loginBtn" onClick={loginUser}>
+                Войти
+              </div>
             </div>
           </div>
         ) : (
@@ -187,7 +254,9 @@ const Navbar = () => {
                 placeholder="Repeat your password"
                 onChange={e => setRegSecondPasswordInpValue(e.target.value)}
               />
-              <div className="regBtn">Зарегистрироваться</div>
+              <div className="regBtn" onClick={createUser}>
+                Зарегистрироваться
+              </div>
             </div>
           </div>
         )}
