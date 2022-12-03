@@ -48,6 +48,7 @@ const Navbar = () => {
     formData.append("password", passwordInpValue);
     handleLogin(formData, logInpValue, navigate);
     alert("Успешный вход!");
+    setModal(false);
   }
 
   const logout = () => {
