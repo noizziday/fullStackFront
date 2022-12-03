@@ -52,138 +52,146 @@ const Navbar = () => {
                 backgroundColor: "black",
                 opacity: "0.5",
                 width: "100%",
+                right: "0",
+                transition: "0.5s",
               }
-            : null
+            : {
+                position: "fixed",
+                height: "5000px",
+                backgroundColor: "black",
+                opacity: "0.1",
+                width: "100%",
+                right: "5000px",
+                transition: "0.5s",
+              }
         }></div>
-      {modal ? (
-        <div className="modalBlock">
-          <div
-            className="closeBtn"
-            onClick={() => {
-              setModal(false);
-              setLogInpValue("");
-              setPasswordInpValue("");
-              setRegEmailInpValue("");
-              setRegLogInpValue("");
-              setRegPasswordInpValue("");
-              setRegPasswordInpValue("");
-            }}>
-            <img src={imag} alt="" width="20px" height="20px" />
-          </div>
-          {inputs ? (
-            // Это бло с входом в аккаунт
-            <div className="modalContent">
-              <div className="changeInputs">
-                <div
-                  className="changeToLogIn"
-                  style={{
-                    backgroundColor: "#e4cfa9",
-                    color: "#002939",
-                  }}
-                  onClick={() => {
-                    setRegEmailInpValue("");
-                    setRegLogInpValue("");
-                    setRegPasswordInpValue("");
-                    setRegPasswordInpValue("");
-                    setInputs(true);
-                  }}>
-                  Вход
-                </div>
-                <div className="changeLine"></div>
-                <div
-                  className="changeToSignUp"
-                  onClick={() => {
-                    setLogInpValue("");
-                    setPasswordInpValue("");
-                    setInputs(false);
-                  }}>
-                  Регистрация
-                </div>
-              </div>
-              <div className="authModule">
-                <input
-                  type="email"
-                  className="loginInp"
-                  placeholder="Email"
-                  value={logInpValue}
-                  onChange={e => {
-                    setLogInpValue(e.target.value);
-                  }}
-                />
-                <input
-                  value={passwordInpValue}
-                  type="password"
-                  className="passwordInp"
-                  placeholder="Password"
-                  onChange={e => setPasswordInpValue(e.target.value)}
-                />
-                <div className="loginBtn">Войти</div>
-              </div>
-            </div>
-          ) : (
-            // Это блок с регистрацией
-            <div className="modalContent ">
-              <div className="changeInputs">
-                <div
-                  className="changeToLogIn"
-                  onClick={() => {
-                    setRegEmailInpValue("");
-                    setRegLogInpValue("");
-                    setRegPasswordInpValue("");
-                    setRegPasswordInpValue("");
-                    setInputs(true);
-                  }}>
-                  Вход
-                </div>
-                <div className="changeLine"></div>
-                <div
-                  className="changeToSignUp"
-                  style={{ backgroundColor: "#e4cfa9", color: "#002939" }}
-                  onClick={() => {
-                    setLogInpValue("");
-                    setPasswordInpValue("");
-                    setInputs(false);
-                  }}>
-                  Регистрация
-                </div>
-              </div>
-              <div className="regModule">
-                <input
-                  type="email"
-                  className="loginInp"
-                  placeholder="Set your email"
-                  value={regEmailInpValue}
-                  onChange={e => {
-                    setRegEmailInpValue(e.target.value);
-                  }}
-                />
-                <input
-                  type="text"
-                  value={regLogInpValue}
-                  className="usernameInp"
-                  placeholder="Set your username"
-                  onChange={e => setRegLogInpValue(e.target.value)}
-                />
-                <input
-                  type="password"
-                  value={regPasswordInpValue}
-                  className="passwordInp"
-                  placeholder="Set password"
-                  onChange={e => setRegPasswordInpValue(e.target.value)}
-                />
-                <input
-                  type="password"
-                  value={regSecondPasswordInpValue}
-                  className="secondPasswordInp"
-                  placeholder="Repeat your password"
-                  onChange={e => setRegSecondPasswordInpValue(e.target.value)}
-                />
-                <div className="regBtn">Зарегистрироваться</div>
-              </div>
-            </div>
-          )}
+      <div className={modal ? "modalBlock active" : "modalBlock inactive"}>
+        <div
+          className="closeBtn"
+          onClick={() => {
+            setModal(false);
+            setLogInpValue("");
+            setPasswordInpValue("");
+            setRegEmailInpValue("");
+            setRegLogInpValue("");
+            setRegPasswordInpValue("");
+            setRegPasswordInpValue("");
+          }}>
+          <img src={imag} alt="" width="20px" height="20px" />
         </div>
-      ) : null}
+        {inputs ? (
+          // Это бло с входом в аккаунт
+          <div className="modalContent">
+            <div className="changeInputs">
+              <div
+                className="changeToLogIn"
+                style={{
+                  backgroundColor: "#e4cfa9",
+                  color: "#002939",
+                }}
+                onClick={() => {
+                  setRegEmailInpValue("");
+                  setRegLogInpValue("");
+                  setRegPasswordInpValue("");
+                  setRegPasswordInpValue("");
+                  setInputs(true);
+                }}>
+                Вход
+              </div>
+              <div className="changeLine"></div>
+              <div
+                className="changeToSignUp"
+                onClick={() => {
+                  setLogInpValue("");
+                  setPasswordInpValue("");
+                  setInputs(false);
+                }}>
+                Регистрация
+              </div>
+            </div>
+            <div className="authModule">
+              <input
+                type="email"
+                className="loginInp"
+                placeholder="Email"
+                value={logInpValue}
+                onChange={e => {
+                  setLogInpValue(e.target.value);
+                }}
+              />
+              <input
+                value={passwordInpValue}
+                type="password"
+                className="passwordInp"
+                placeholder="Password"
+                onChange={e => setPasswordInpValue(e.target.value)}
+              />
+              <div className="loginBtn">Войти</div>
+            </div>
+          </div>
+        ) : (
+          // Это блок с регистрацией
+          <div className="modalContent ">
+            <div className="changeInputs">
+              <div
+                className="changeToLogIn"
+                onClick={() => {
+                  setRegEmailInpValue("");
+                  setRegLogInpValue("");
+                  setRegPasswordInpValue("");
+                  setRegPasswordInpValue("");
+                  setInputs(true);
+                }}>
+                Вход
+              </div>
+              <div className="changeLine"></div>
+              <div
+                className="changeToSignUp"
+                style={{ backgroundColor: "#e4cfa9", color: "#002939" }}
+                onClick={() => {
+                  setLogInpValue("");
+                  setPasswordInpValue("");
+                  setInputs(false);
+                }}>
+                Регистрация
+              </div>
+            </div>
+            <div className="regModule">
+              <input
+                type="email"
+                className="loginInp"
+                placeholder="Set your email"
+                value={regEmailInpValue}
+                onChange={e => {
+                  setRegEmailInpValue(e.target.value);
+                }}
+              />
+              <input
+                type="text"
+                value={regLogInpValue}
+                className="usernameInp"
+                placeholder="Set your username"
+                onChange={e => setRegLogInpValue(e.target.value)}
+              />
+              <input
+                type="password"
+                value={regPasswordInpValue}
+                className="passwordInp"
+                placeholder="Set password"
+                onChange={e => setRegPasswordInpValue(e.target.value)}
+              />
+              <input
+                type="password"
+                value={regSecondPasswordInpValue}
+                className="secondPasswordInp"
+                placeholder="Repeat your password"
+                onChange={e => setRegSecondPasswordInpValue(e.target.value)}
+              />
+              <div className="regBtn">Зарегистрироваться</div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
