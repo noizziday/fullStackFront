@@ -2,14 +2,17 @@ import React from "react";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import MainRoutes from "./MainRoutes";
+import HotelsContextProvider from "./contexts/HotelsContextProvider";
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <MainRoutes />
-      <Footer />
-    </div>
+    <>
+      <HotelsContextProvider>
+        <Navbar />
+        <MainRoutes />
+        <Footer />
+      </HotelsContextProvider>
+    </>
   );
 };
 
