@@ -184,6 +184,9 @@ const Navbar = () => {
           )}
         </div>
       ) : null}
+      <button onClick={() => navigate("/hotel/add")}>
+        Загрузить свой объект
+      </button>
     </div>
   );
 };
