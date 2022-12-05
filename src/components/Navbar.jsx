@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/AuthModal.css";
 import imag from "../media/icons8-close-48.png";
 import { authContext, useAuth } from "../authContext";
-
+import "../styles/DropDown.css";
 const Navbar = () => {
   const { handleRegister, setError, handleLogin, currentUser } =
     useContext(authContext);
@@ -49,7 +49,6 @@ const Navbar = () => {
     formData.append("email", logInpValue);
     formData.append("password", passwordInpValue);
     handleLogin(formData, logInpValue, navigate);
-    alert("Успешный вход!");
     setModal(false);
   }
 
@@ -64,6 +63,8 @@ const Navbar = () => {
     setError(false);
   }, []);
 
+  const [dropDown, setDropDown] = useState(false);
+
   return (
     <div className="navBlock">
       {localStorage.email ? (
@@ -73,13 +74,41 @@ const Navbar = () => {
               Главная
             </div>
             <div className="navElementsLinks">Отели</div>
-            <div
-              className="navElementsLinks modal-btn"
-              htmlFor="modal-toggle"
-              onClick={() => {
-                logout();
-              }}>
-              Выйти
+            <div className="navElementsLinks modal-btn" htmlFor="modal-toggle">
+              Зарегистрировать объект
+            </div>
+            <div className="profileDiv">
+              <div className="profileDropDown">
+                <div
+                  className="profileIcon"
+                  onClick={() => setDropDown(!dropDown)}>
+                  P
+                </div>
+                <div
+                  className={
+                    dropDown ? "dropDownMenu active" : "dropDownMenu inactive"
+                  }>
+                  <div
+                    className="dropDownMenuBtn"
+                    onClick={() => setDropDown(!dropDown)}>
+                    Профиль
+                  </div>
+                  <div
+                    className="dropDownMenuBtn"
+                    onClick={() => setDropDown(!dropDown)}>
+                    Мой аккаунт
+                  </div>
+                  <div
+                    className="dropDownMenuBtn"
+                    onClick={() => {
+                      setDropDown(!dropDown);
+                      logout();
+                    }}>
+                    Выйти из аккаунта
+                  </div>
+                </div>
+              </div>
+              <div className="profileName">Profile Name</div>
             </div>
           </div>{" "}
         </div>
