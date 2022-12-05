@@ -3,6 +3,7 @@ import "../styles/HomePage.css";
 import "../styles/AuthModal.css";
 import Calendar from "react-calendar";
 import "../styles/ForCalendar.css";
+
 const HomePage = () => {
   const [date, setDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);

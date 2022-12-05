@@ -6,7 +6,9 @@ import imag from "../media/icons8-close-48.png";
 import { authContext, useAuth } from "../authContext";
 
 const Navbar = () => {
-  const { handleRegister, setError, handleLogin } = useContext(authContext);
+  const { handleRegister, setError, handleLogin, currentUser } =
+    useContext(authContext);
+  console.log(currentUser);
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(true);
