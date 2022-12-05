@@ -27,7 +27,7 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-const API = "http://34.96.250.19";
+const API = "http://34.159.95.125";
 
 const HotelsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -226,7 +226,7 @@ const HotelsContextProvider = ({ children }) => {
       value={{
         hotels: state.hotels,
         pages: state.pages,
-        categories: state.categories,
+        // categories: state.categories,
         oneHotel: state.oneHotel,
 
         createHotel,
