@@ -1,5 +1,5 @@
 .react-calendar {
-  width: 320px;
+  width: 30%;
   max-width: 100%;
   background: #002939;
   border: 1px solid #a0a096;
@@ -46,10 +46,12 @@
 }
 .react-calendar__navigation button:disabled {
   background-color: #f0f0f0;
+  color: #002939;
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #e6e6e6;
+  color: #002939;
 }
 .react-calendar__month-view__weekdays {
   text-align: center;
