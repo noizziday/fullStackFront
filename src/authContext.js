@@ -6,6 +6,7 @@ export const useAuth = () => useContext(authContext);
 
 const API = "http://34.159.95.125";
 
+
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   const [error, setError] = useState(false);
@@ -24,7 +25,9 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
-  async function handleLogin(formData, logInpValue, navigate, currentUser) {
+
+  async function handleLogin(formData, logInpValue, navigate) {
+
     setLoading(true);
     try {
       const res = await axios.post(`${API}/account/login/`, formData);
