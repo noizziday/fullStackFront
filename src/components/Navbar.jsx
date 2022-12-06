@@ -3,7 +3,7 @@ import "../styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/AuthModal.css";
 import imag from "../media/icons8-close-48.png";
-import { authContext, useAuth } from "../authContext";
+import { authContext, useAuth } from "../contexts/authContext";
 import "../styles/DropDown.css";
 const Navbar = () => {
   const { handleRegister, setError, handleLogin, currentUser } =
@@ -74,7 +74,10 @@ const Navbar = () => {
               Главная
             </div>
             <div className="navElementsLinks">Отели</div>
-            <div className="navElementsLinks modal-btn" htmlFor="modal-toggle">
+            <div
+              className="navElementsLinks modal-btn"
+              htmlFor="modal-toggle"
+              onClick={() => navigate("/hotel/add")}>
               Зарегистрировать объект
             </div>
             <div className="profileDiv">

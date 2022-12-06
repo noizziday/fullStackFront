@@ -4,8 +4,8 @@ import HomePage from "./pages/HomePage";
 import HotelDetails from "./components/hotels/Details/HotelDetails";
 import HotelFavorites from "./components/hotels/HotelFavorites/HotelFavorites";
 import AddHotel from "./components/hotels/AddHotel/AddHotel";
-// import HotelsList from "./components/hotels/HotelsList/HotelsList";
-// import UpdateHotel from "./components/hotels/UpdateHotel/UpdateHotel"
+import HotelsList from "./components/hotels/HotelsList/HotelsList";
+import UpdateHotel from "./components/hotels/UpdateHotel/UpdateHotel";
 import PayForm from "./components/PayForm";
 
 const MainRoutes = () => {
@@ -16,8 +16,8 @@ const MainRoutes = () => {
       <Route path="/favorites" element={<HotelFavorites />} />
       <Route path="/pay" element={<PayForm />} />
       <Route path="/hotel/add" element={<AddHotel />} />
-      {/* <Route path="/hotels" element={<HotelsList />} />
-      <Route path="/edit/:id" element={<UpdateHotel />} /> */}
+      <Route path="/hotels" element={<HotelsList />} />
+      <Route path="/edit/:id" element={<UpdateHotel />} />
     </Routes>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import AuthContextProvider from "./authContext";
+import AuthContextProvider from "./contexts/authContext";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import MainRoutes from "./MainRoutes";
