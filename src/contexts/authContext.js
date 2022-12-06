@@ -6,11 +6,11 @@ export const useAuth = () => useContext(authContext);
 
 const API = "http://34.159.95.125";
 
-
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState();
 
   async function handleRegister(formData) {
     setLoading(true);
@@ -25,9 +25,40 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
+  async function getOneUser(email) {
+    try {
+      const res = await axios(`${API}/account/user/${email}/`);
+      console.log(res.data);
+      setUser(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function emailRecovery(email, navigate) {
+    try {
+      const res = await axios.post(`${API}/account/restore-password/`, email);
+      console.log(res);
+      navigate("/recovery/email/password");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function passwordRecovery(passwordRecoveryObj, navigate) {
+    try {
+      const res = await axios.post(
+        `${API}/account/set-restored-password/`,
+        passwordRecoveryObj
+      );
+      console.log(res);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   async function handleLogin(formData, logInpValue, navigate) {
-
     setLoading(true);
     try {
       const res = await axios.post(`${API}/account/login/`, formData);
@@ -90,11 +121,17 @@ const AuthContextProvider = ({ children }) => {
       value={{
         currentUser,
         error,
+        user,
+
         handleRegister,
         setError,
         handleLogin,
         checkAuth,
         handleLogout,
+        emailRecovery,
+        passwordRecovery,
+        getOneUser,
+        setUser,
       }}>
       {children}
     </authContext.Provider>

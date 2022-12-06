@@ -60,3 +60,11 @@
   font-weight: bold;
   width: 75%;
 }
+.forgottPassword {
+  color: #e4cfa9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.forgottPassword:hover {
+  color: white;
+}

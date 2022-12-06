@@ -10,9 +10,7 @@ const App = () => {
     <>
       <AuthContextProvider>
         <HotelsContextProvider>
-          <Navbar />
           <MainRoutes />
-          <Footer />
         </HotelsContextProvider>
       </AuthContextProvider>
     </>

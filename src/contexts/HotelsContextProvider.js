@@ -16,7 +16,7 @@ function reducer(state = INIT_STATE, action) {
     case "GET_HOTELS":
       return {
         ...state,
-        hotels: action.payload,
+        hotels: action.payload.results,
         pages: Math.ceil(action.payload.count / 3),
       };
 
@@ -42,8 +42,26 @@ const HotelsContextProvider = ({ children }) => {
         },
       };
       const res = await axios.post(`${API}/hotel/hotels/`, newHotel, config);
+      console.log(res.data.slug);
+      navigate(`/hotel/add/addroom/${res.data.slug}`);
+      // getHotels();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function addRoomToHotel(newRoom, navigate) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(`${API}/room/add-room/`, newRoom, config);
       console.log(res);
-      navigate("/hotels");
+      navigate("/hotels/");
       // getHotels();
     } catch (err) {
       console.log(err);
@@ -59,10 +77,7 @@ const HotelsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(
-        `${API}/hotel/hotels/${window.location.search}`,
-        config
-      );
+      const res = await axios(`${API}/hotel/hotels/`, config);
       dispatch({
         type: "GET_HOTELS",
         payload: res.data,
@@ -106,7 +121,7 @@ const HotelsContextProvider = ({ children }) => {
         editedHotel,
         config
       );
-      navigate("/hotel/hotels");
+      navigate("/hotels/");
       getHotels();
     } catch (err) {
       console.log(err);
@@ -177,6 +192,7 @@ const HotelsContextProvider = ({ children }) => {
         oneHotel: state.oneHotel,
 
         createHotel,
+        addRoomToHotel,
         getHotels,
         getOneHotel,
         updateHotel,
