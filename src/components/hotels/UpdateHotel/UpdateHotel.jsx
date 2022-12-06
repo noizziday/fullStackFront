@@ -27,6 +27,7 @@ const UpdateHotel = () => {
       setImage(oneHotel.image);
       setStars(oneHotel.stars);
       setRegion(oneHotel.region);
+      console.log(oneHotel.image);
     }
   }, [oneHotel]);
 
@@ -38,12 +39,12 @@ const UpdateHotel = () => {
     editedHotel.append("desc_list", desc_list);
     editedHotel.append("stars", stars);
     editedHotel.append("region", region);
-
-    if (image) {
-      editedHotel.append("image", image);
-    }
+    editedHotel.append("image", image);
     updateHotel(id, editedHotel, navigate);
+    console.log(image);
   }
+
+  console.log(oneHotel, title);
 
   return (
     <div>

@@ -6,7 +6,7 @@
   position: absolute;
   background-color: #002939;
   justify-content: space-between;
-  height: 100px;
+  height: 120px;
   transition: visibility 0s, opacity 0.5s linear;
   margin-top: 20px;
 }

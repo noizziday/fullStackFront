@@ -63,7 +63,8 @@
 .forgottPassword {
   color: #e4cfa9;
   cursor: pointer;
+  transition: 0.2s;
 }
 .forgottPassword:hover {
-  text-shadow: 1px 0px 2px white;
+  color: white;
 }

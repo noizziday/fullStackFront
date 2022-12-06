@@ -17,7 +17,7 @@ const HomePage = () => {
   if (ddFirst < 10) ddFirst = "0" + ddFirst;
   if (mmFirst < 10) mmFirst = "0" + mmFirst;
 
-  let dateFirst = ddFirst + "/" + mmFirst + "/" + yyyyFirst;
+  let dateFirst = yyyyFirst + "-" + mmFirst + "-" + ddFirst;
 
   let yyyySecond = date[1]?.getFullYear();
   let mmSecond = date[1]?.getMonth() + 1;
@@ -26,7 +26,7 @@ const HomePage = () => {
   if (ddSecond < 10) ddSecond = "0" + ddSecond;
   if (mmSecond < 10) mmSecond = "0" + mmSecond;
 
-  let dateSecond = ddSecond + "/" + mmSecond + "/" + yyyySecond;
+  let dateSecond = yyyySecond + "-" + mmSecond + "-" + ddSecond;
 
   return (
     <div>
@@ -64,7 +64,7 @@ const HomePage = () => {
                       setIsShow(true);
                     }}
                     value={
-                      dateFirst == undefined + "/" + NaN + "/" + undefined
+                      dateFirst == undefined + "-" + NaN + "-" + undefined
                         ? "Заезд"
                         : dateFirst
                     }
@@ -80,7 +80,7 @@ const HomePage = () => {
                       setIsShow(true);
                     }}
                     value={
-                      dateSecond == undefined + "/" + NaN + "/" + undefined
+                      dateSecond == undefined + "-" + NaN + "-" + undefined
                         ? "Отъезд"
                         : dateSecond
                     }
@@ -118,7 +118,7 @@ const HomePage = () => {
                 className="reserveInp number"
                 placeholder="Количество"
               />
-              <div className="privateBtn">Забронировать</div>
+              <div className="privateBtn">Найти</div>
             </div>
           </div>
         </div>

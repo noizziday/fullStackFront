@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { hotelsContext } from "../../../contexts/HotelsContextProvider";
 
 const HotelDetails = () => {
+  const { id } = useParams();
   return (
     <>
       <div className="block-1" style={{ color: "#002939" }}>
