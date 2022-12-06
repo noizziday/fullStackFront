@@ -8,9 +8,7 @@ const App = () => {
   return (
     <div>
       <AuthContextProvider>
-      <Navbar />
-      <MainRoutes />
-      <Footer />
+        <MainRoutes />
       </AuthContextProvider>
     </div>
   );

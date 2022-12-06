@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/HomePage.css";
 import "../styles/AuthModal.css";
 import Calendar from "react-calendar";
 import "../styles/ForCalendar.css";
+import useOutsideAlerter from "../custom/useOutside";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 const HomePage = () => {
   const [date, setDate] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  const { ref, isShow, setIsShow } = useOutsideAlerter(false);
 
   let yyyyFirst = date[0]?.getFullYear();
   let mmFirst = date[0]?.getMonth() + 1;
@@ -27,6 +30,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <Navbar />
       <div>
         {/* <div className="imgDiv">
             <img
@@ -57,7 +61,7 @@ const HomePage = () => {
                     className="reserveInp dates1"
                     placeholder="Заезд"
                     onClick={() => {
-                      setShowCalendar(!showCalendar);
+                      setIsShow(true);
                     }}
                     value={
                       dateFirst == undefined + "/" + NaN + "/" + undefined
@@ -73,7 +77,7 @@ const HomePage = () => {
                     className="reserveInp dates2"
                     placeholder="Отъезд"
                     onClick={() => {
-                      setShowCalendar(!showCalendar);
+                      setIsShow(true);
                     }}
                     value={
                       dateSecond == undefined + "/" + NaN + "/" + undefined
@@ -82,9 +86,9 @@ const HomePage = () => {
                     }
                   />
                 </div>
-                {showCalendar ? (
+                {isShow ? (
                   <div className="app">
-                    <div className="calendar-container">
+                    <div className="calendar-container" ref={ref}>
                       <Calendar
                         onChange={setDate}
                         value={date}
@@ -120,6 +124,7 @@ const HomePage = () => {
         </div>
         <div className="mainContent">Здесь будет основная информация</div>
       </div>
+      <Footer />
     </div>
   );
 };

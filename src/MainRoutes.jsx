@@ -6,6 +6,8 @@ import EditPage from "./pages/EditPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import HotelDetailsPage from "./pages/HotelDetailsPage";
+import EmailRecovery from "./components/PasswordRecovery/EmailRecovery";
+import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 const MainRoutes = () => {
   return (
     <Routes>
@@ -15,6 +17,8 @@ const MainRoutes = () => {
       <Route path="/registration" element={<RegistrationPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/details" element={<HotelDetailsPage />} />
+      <Route path="/recovery/email" element={<EmailRecovery />} />
+      <Route path="/recovery/password" element={<PasswordRecovery />} />
     </Routes>
   );
 };

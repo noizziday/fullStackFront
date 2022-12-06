@@ -1,10 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import "../styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/AuthModal.css";
 import imag from "../media/icons8-close-48.png";
 import { authContext, useAuth } from "../authContext";
 import "../styles/DropDown.css";
+import useOutsideAlerter from "../custom/useOutside";
 const Navbar = () => {
   const { handleRegister, setError, handleLogin } = useContext(authContext);
   const [modal, setModal] = useState(false);
@@ -63,6 +64,8 @@ const Navbar = () => {
 
   const [dropDown, setDropDown] = useState(false);
 
+  const { ref, isShow, setIsShow } = useOutsideAlerter(false);
+
   return (
     <div className="navBlock">
       {localStorage.email ? (
@@ -77,15 +80,14 @@ const Navbar = () => {
             </div>
             <div className="profileDiv">
               <div className="profileDropDown">
-                <div
-                  className="profileIcon"
-                  onClick={() => setDropDown(!dropDown)}>
+                <div className="profileIcon" onClick={() => setIsShow(true)}>
                   P
                 </div>
                 <div
                   className={
-                    dropDown ? "dropDownMenu active" : "dropDownMenu inactive"
-                  }>
+                    isShow ? "dropDownMenu active" : "dropDownMenu inactive"
+                  }
+                  ref={ref}>
                   <div
                     className="dropDownMenuBtn"
                     onClick={() => setDropDown(!dropDown)}>
@@ -221,8 +223,24 @@ const Navbar = () => {
                 placeholder="Password"
                 onChange={e => setPasswordInpValue(e.target.value)}
               />
-              <div className="loginBtn" onClick={loginUser}>
+              <div
+                className="loginBtn"
+                onClick={() => {
+                  loginUser();
+                  setLogInpValue("");
+                  setPasswordInpValue("");
+                  setModal(false);
+                }}>
                 Войти
+              </div>
+              <div
+                className="forgottPassword"
+                onClick={() => {
+                  navigate("/recovery/email");
+
+                  setModal(false);
+                }}>
+                Забыли пароль?
               </div>
             </div>
           </div>
@@ -284,7 +302,12 @@ const Navbar = () => {
                 placeholder="Repeat your password"
                 onChange={e => setRegSecondPasswordInpValue(e.target.value)}
               />
-              <div className="regBtn" onClick={createUser}>
+              <div
+                className="regBtn"
+                onClick={() => {
+                  createUser();
+                  setModal(false);
+                }}>
                 Зарегистрироваться
               </div>
             </div>
