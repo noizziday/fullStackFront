@@ -3,11 +3,13 @@ import "../styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/AuthModal.css";
 import imag from "../media/icons8-close-48.png";
-import { authContext, useAuth } from "../authContext";
+import { authContext, useAuth } from "../contexts/authContext";
 import "../styles/DropDown.css";
 import useOutsideAlerter from "../custom/useOutside";
 const Navbar = () => {
-  const { handleRegister, setError, handleLogin } = useContext(authContext);
+  const { handleRegister, setError, handleLogin, currentUser } =
+    useContext(authContext);
+  console.log(currentUser);
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(true);
@@ -75,7 +77,10 @@ const Navbar = () => {
               Главная
             </div>
             <div className="navElementsLinks">Отели</div>
-            <div className="navElementsLinks modal-btn" htmlFor="modal-toggle">
+            <div
+              className="navElementsLinks modal-btn"
+              htmlFor="modal-toggle"
+              onClick={() => navigate("/hotel/add")}>
               Зарегистрировать объект
             </div>
             <div className="profileDiv">

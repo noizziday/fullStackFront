@@ -1,24 +1,23 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AddPage from "./pages/AddPage";
-import EditPage from "./pages/EditPage";
-import RegistrationPage from "./pages/RegistrationPage";
-import LoginPage from "./pages/LoginPage";
-import HotelDetailsPage from "./pages/HotelDetailsPage";
-import EmailRecovery from "./components/PasswordRecovery/EmailRecovery";
-import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
+import HotelDetails from "./components/hotels/Details/HotelDetails";
+import HotelFavorites from "./components/hotels/HotelFavorites/HotelFavorites";
+import AddHotel from "./components/hotels/AddHotel/AddHotel";
+import HotelsList from "./components/hotels/HotelsList/HotelsList";
+import UpdateHotel from "./components/hotels/UpdateHotel/UpdateHotel";
+import PayForm from "./components/PayForm";
+
 const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/edit" element={<EditPage />} />
-      <Route path="/add" element={<AddPage />} />
-      <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/details" element={<HotelDetailsPage />} />
-      <Route path="/recovery/email" element={<EmailRecovery />} />
-      <Route path="/recovery/password" element={<PasswordRecovery />} />
+      <Route path="/details/:id" element={<HotelDetails />} />
+      <Route path="/favorites" element={<HotelFavorites />} />
+      <Route path="/pay" element={<PayForm />} />
+      <Route path="/hotel/add" element={<AddHotel />} />
+      <Route path="/hotels" element={<HotelsList />} />
+      <Route path="/edit/:id" element={<UpdateHotel />} />
     </Routes>
   );
 };

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { hotelsContext } from "../../../contexts/HotelsContextProvider";
 
 const HotelDetails = () => {
   return (
@@ -87,6 +89,11 @@ const HotelDetails = () => {
             />
             <button className="booking-btn">ВЫБРАТЬ "VIP"</button>
           </div>
+        </div>
+      </div>
+      <div className="comments-block">
+        <div className="addComment">
+          <input type="text" placeholder="Оставить комментарий:" />
         </div>
       </div>
     </>
