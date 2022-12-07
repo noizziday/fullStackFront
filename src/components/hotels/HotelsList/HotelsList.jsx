@@ -2,12 +2,12 @@ import React, { useEffect, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import HotelCard from "../HotelCard/HotelCard";
 import { hotelsContext } from "../../../contexts/HotelsContextProvider";
-import Pagination from "react-bootstrap/Pagination";
+// import Pagination from "react-bootstrap/Pagination";
 
 const HotelsList = () => {
   const { getHotels, hotels, pages } = useContext(hotelsContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     getHotels();
@@ -17,20 +17,20 @@ const HotelsList = () => {
     getHotels();
   }, [searchParams]);
 
-  useEffect(() => {
-    setSearchParams({
-      page: currentPage,
-    });
-  }, [currentPage]);
+  // useEffect(() => {
+  //   setSearchParams({
+  //     page: currentPage,
+  //   });
+  // }, [currentPage]);
 
-  function getPagesCount() {
-    let pageCountArr = [];
-    for (let i = 1; i < pages + 1; i++) {
-      pageCountArr.push(i);
-    }
-    return pageCountArr;
-  }
-  console.log(hotels);
+  // function getPagesCount() {
+  //   let pageCountArr = [];
+  //   for (let i = 1; i < pages + 1; i++) {
+  //     pageCountArr.push(i);
+  //   }
+  //   return pageCountArr;
+  // }
+  // console.log(hotels);
 
   return (
     <div>
@@ -40,7 +40,7 @@ const HotelsList = () => {
         <HotelCard key={item.slug} item={item} />
       ))}
 
-      <Pagination>
+      {/* <Pagination>
         <Pagination.Prev onClick={() => setCurrentPage(currentPage - 1)} />
 
         {getPagesCount().map(item =>
@@ -59,7 +59,7 @@ const HotelsList = () => {
         )}
 
         <Pagination.Next onClick={() => setCurrentPage(currentPage + 1)} />
-      </Pagination>
+      </Pagination> */}
     </div>
   );
 };

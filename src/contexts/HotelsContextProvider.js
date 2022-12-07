@@ -6,9 +6,9 @@ export const hotelsContext = React.createContext();
 
 const INIT_STATE = {
   hotels: [],
-  pages: 0,
-
   oneHotel: null,
+  comments: [],
+  oneComment: null,
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -17,11 +17,13 @@ function reducer(state = INIT_STATE, action) {
       return {
         ...state,
         hotels: action.payload,
-        pages: Math.ceil(action.payload.count / 3),
+        // pages: Math.ceil(action.payload.count / 3),
       };
 
     case "GET_ONE_HOTEL":
       return { ...state, oneHotel: action.payload };
+    case "GET_ONE_COMMENT":
+      return { ...state, comments: action.payload };
     default:
       return state;
   }
@@ -44,7 +46,7 @@ const HotelsContextProvider = ({ children }) => {
       const res = await axios.post(`${API}/hotel/hotels/`, newHotel, config);
       console.log(res);
       navigate("/hotels");
-      // getHotels();
+      getHotels();
     } catch (err) {
       console.log(err);
     }
@@ -60,14 +62,15 @@ const HotelsContextProvider = ({ children }) => {
         },
       };
       const res = await axios(
-        `${API}/hotel/hotels/${window.location.search}`,
+        `${API}/hotel/hotels/
+        `,
         config
       );
       dispatch({
         type: "GET_HOTELS",
-        payload: res.data,
+        payload: res.data.results,
       });
-      console.log(res.data);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -91,6 +94,25 @@ const HotelsContextProvider = ({ children }) => {
       console.log(err);
     }
   }
+  async function getComments(slug) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios(`${API}/comment/crud/${slug}/`, config);
+      dispatch({
+        type: "GET_ONE_COMMENT",
+        payload: res.data,
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   async function updateHotel(id, editedHotel, navigate) {
     try {
@@ -101,7 +123,7 @@ const HotelsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.patch(
+      const res = await axios.put(
         `${API}/hotel/hotels/${id}/`,
         editedHotel,
         config
@@ -129,51 +151,48 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
-  // async function createComment(id, content) {
-  //   try {
-  //     const tokens = JSON.parse(localStorage.getItem("tokens"));
-  //     const Authorization = `Bearer ${tokens.access}`;
-  //     const config = {
-  //       headers: {
-  //         Authorization,
-  //       },
-  //     };
-  //     const res = await axios.post(
-  //       `${API}/hotel/hotels/${id}/`,
-  //       content,
-  //       config
-  //     );
-  //     console.log(res);
-  //     getOneHotel(id);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  async function createComment(id, content) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(`${API}/comment/crud/`, content, config);
+      console.log(res);
+      getOneHotel(id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-  // async function deleteComment(hotelId, commentId) {
-  //   try {
-  //     const tokens = JSON.parse(localStorage.getItem("tokens"));
-  //     const Authorization = `Bearer ${tokens.access}`;
-  //     const config = {
-  //       headers: {
-  //         Authorization,
-  //       },
-  //     };
-  //     const res = await axios.delete(
-  //       `${API}/hotel/hotels/${commentId}/`,
-  //       config
-  //     );
-  //     getOneHotel(hotelId);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  async function deleteComment(hotelId, commentId) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.delete(
+        `${API}/hotel/hotels/${commentId}/`,
+        config
+      );
+      getOneHotel(hotelId);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <hotelsContext.Provider
       value={{
         hotels: state.hotels,
-        pages: state.pages,
+        // pages: state.pages,
+        comments: state.comments,
         oneHotel: state.oneHotel,
 
         createHotel,
@@ -181,8 +200,9 @@ const HotelsContextProvider = ({ children }) => {
         getOneHotel,
         updateHotel,
         deleteHotel,
-        // createComment,
-        // deleteComment,
+        createComment,
+        getComments,
+        deleteComment,
       }}>
       {children}
     </hotelsContext.Provider>

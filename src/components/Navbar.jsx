@@ -73,7 +73,11 @@ const Navbar = () => {
             <div className="navElementsLinks" onClick={() => navigate("/")}>
               Главная
             </div>
-            <div className="navElementsLinks">Отели</div>
+            <div
+              className="navElementsLinks"
+              onClick={() => navigate("/hotels")}>
+              Отели
+            </div>
             <div
               className="navElementsLinks modal-btn"
               htmlFor="modal-toggle"

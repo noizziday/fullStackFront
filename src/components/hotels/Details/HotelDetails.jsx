@@ -1,8 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { hotelsContext } from "../../../contexts/HotelsContextProvider";
+import Reviews from "../../Reviews";
 
 const HotelDetails = () => {
+  const { getOneHotel, oneHotel, comments, getComments, deleteComment } =
+    useContext(hotelsContext);
+  const { id } = useParams();
+  console.log(comments);
+
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    getComments(id);
+  }, []);
   return (
     <>
       <div className="block-1" style={{ color: "#002939" }}>
@@ -91,11 +101,34 @@ const HotelDetails = () => {
           </div>
         </div>
       </div>
-      <div className="comments-block">
-        <div className="addComment">
-          <input type="text" placeholder="Оставить комментарий:" />
-        </div>
+      <div
+        className="comments-block"
+        style={{ display: "flex", justifyContent: "center" }}>
+        <button className="comment-btn" onClick={() => setOpen(!open)}>
+          оставить комментарий
+        </button>
+        {comments.map(item => {
+          if (item.hotel == oneHotel.slug) {
+            return (
+              <div key={item.id}>
+                <span>
+                  <b>{item.user}</b>
+                </span>
+                <br />
+                <span>{item.comment}</span>
+                {item.user ? (
+                  <button onClick={() => deleteComment(id, item.id)}>
+                    Delete
+                  </button>
+                ) : null}
+                <br />
+                <br />
+              </div>
+            );
+          }
+        })}
       </div>
+      {open ? <Reviews id={id} setOpen={setOpen} open={open} /> : <></>}
     </>
   );
 };

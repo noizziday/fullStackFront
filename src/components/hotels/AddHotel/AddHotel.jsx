@@ -13,6 +13,8 @@ const AddHotel = () => {
   const [image, setImage] = useState(null);
   const [stars, setStars] = useState(0);
   const [region, setRegion] = useState("");
+  const [food, setFood] = useState(false);
+  const [pets, setPets] = useState(false);
 
   function saveHotel() {
     let newProduct = new FormData();
@@ -22,6 +24,8 @@ const AddHotel = () => {
     newProduct.append("image", image);
     newProduct.append("stars", stars);
     newProduct.append("region", region);
+    newProduct.append("food", food);
+    newProduct.append("pets", pets);
     createHotel(newProduct, navigate);
   }
 
@@ -79,10 +83,24 @@ const AddHotel = () => {
       />
       <br />
       <label htmlFor="Food">Food</label>
-      <input type="checkbox" name="Food" id="Food" />
+      <input
+        type="checkbox"
+        name="Food"
+        id="Food"
+        value={food}
+        onChange={e => {
+          setFood(!e.target.checked);
+        }}
+      />
       <br />
       <label htmlFor="Pets">Pets</label>
-      <input type="checkbox" name="Pets" id="Pets" />
+      <input
+        type="checkbox"
+        name="Pets"
+        id="Pets"
+        value={pets}
+        onChange={e => setPets(!e.target.checked)}
+      />
       <br />
 
       <button onClick={saveHotel}>Save</button>
