@@ -142,4 +142,9 @@ input:focus {
   margin: 50px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+.oneCard {
+  margin-bottom: 20px;
+  margin-left: 50px;
 }
