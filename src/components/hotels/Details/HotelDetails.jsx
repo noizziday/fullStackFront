@@ -11,7 +11,7 @@ const HotelDetails = () => {
 
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    getComments(id);
+    getComments();
   }, []);
   return (
     <>
@@ -107,15 +107,15 @@ const HotelDetails = () => {
         <button className="comment-btn" onClick={() => setOpen(!open)}>
           оставить комментарий
         </button>
-        {comments.map(item => {
-          if (item.hotel == oneHotel.slug) {
+        {comments?.map(item => {
+          if (item.hotel == id) {
             return (
               <div key={item.id}>
                 <span>
                   <b>{item.user}</b>
                 </span>
                 <br />
-                <span>{item.comment}</span>
+                <span>{item.good_review}</span>
                 {item.user ? (
                   <button onClick={() => deleteComment(id, item.id)}>
                     Delete

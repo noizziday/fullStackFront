@@ -94,7 +94,7 @@ const HotelsContextProvider = ({ children }) => {
       console.log(err);
     }
   }
-  async function getComments(slug) {
+  async function getComments() {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -103,12 +103,12 @@ const HotelsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/comment/crud/${slug}/`, config);
+      const res = await axios(`${API}/comment/crud/`, config);
       dispatch({
         type: "GET_ONE_COMMENT",
-        payload: res.data,
+        payload: res.data.results,
       });
-      console.log(res);
+      console.log(res.data.results);
     } catch (err) {
       console.log(err);
     }
