@@ -80,7 +80,7 @@
 .hotelCardBtns button:hover {
   transform: scale(1.1);
 }
-@media (max-width: 1400px) {
+@media (max-width: 1700px) {
   .hotelCardImg {
     width: 150px;
     height: 150px;

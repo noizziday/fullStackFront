@@ -26,7 +26,26 @@ const Footer = () => {
           </div>
         </div>
         <div className="footerEmail">
-          <div>Подпишитесь на рассылку</div>
+          <div className="telegram">
+            <div>
+              <a
+                href="ttps://i.pinimg.com/originals/40/44/c4/4044c48d59b58497ef07c31de5cf3d1c.png"
+                style={{ textDecoration: "none", color: "#e4cfa9" }}>
+                Телеграмм-бот
+              </a>
+            </div>
+            <div>
+              <a href="https://t.me/geteguha_bot">
+                <img
+                  src="https://i.pinimg.com/originals/40/44/c4/4044c48d59b58497ef07c31de5cf3d1c.png"
+                  alt=""
+                  width="50px"
+                  height="50px"
+                  className="telegramImg"
+                />
+              </a>
+            </div>
+          </div>
           <div className="footerEmailDiv">
             <input
               type="e-mail"

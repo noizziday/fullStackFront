@@ -4,6 +4,10 @@
   padding: 0;
   /* color: #002939; */
 }
+.roomFetures {
+  display: flex;
+  flex-direction: column;
+}
 .block-1 {
   background-image: url(https://avatrs.mds.yandex.net/get-altay/2812564/2a0000017322eac33c13e2227ada80a28d6a/XXL);
   margin: 0%;
@@ -26,7 +30,13 @@
   font-size: 72px;
   /* font-weight: bolder; */
   color: #e4cfa9;
-  left: 35%;
+  left: 30vw;
+}
+.telegram {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
 }
 .block-2 {
   margin-top: 100px;

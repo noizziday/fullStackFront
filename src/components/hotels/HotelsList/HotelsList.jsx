@@ -28,6 +28,9 @@ const HotelsList = () => {
   }, [page]);
   useEffect(() => {
     getHotels();
+  }, [location]);
+  useEffect(() => {
+    getHotels();
   }, []);
 
   const { filterHotelsByRegion } = useContext(hotelsContext);

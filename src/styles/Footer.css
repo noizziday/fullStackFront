@@ -8,6 +8,10 @@
   align-items: center;
   justify-content: center;
 }
+.telegramImg {
+  border-radius: 50px;
+  cursor: pointer;
+}
 .footerBlockContent {
   display: flex;
   align-items: center;

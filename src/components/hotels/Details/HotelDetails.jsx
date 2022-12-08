@@ -45,7 +45,20 @@ const HotelDetails = () => {
                 <h5 className="number_category">
                   {item.room_type.toUpperCase()}
                 </h5>
-                <p></p>
+                <p>{item.room_price}$</p>
+                <div className="roomFetures">
+                  {item.air_conditioner ? (
+                    <h6>Кондиционер ✔️</h6>
+                  ) : (
+                    <h6>Кондиционер ❌</h6>
+                  )}
+                  {item.air_conditioner ? (
+                    <h6>Телевизор ✔️</h6>
+                  ) : (
+                    <h6>Телевизор ❌</h6>
+                  )}
+                  {item.air_conditioner ? <h6>WiFi ✔️</h6> : <h6>WiFi ❌</h6>}
+                </div>
                 <img
                   id="standart_img_left"
                   src={`http://${item.room_images[0]}`}

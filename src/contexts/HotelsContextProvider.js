@@ -79,16 +79,16 @@ const HotelsContextProvider = ({ children }) => {
 
   async function getHotels() {
     try {
-      const tokens = JSON.parse(localStorage.getItem("tokens"));
-      const Authorization = `Bearer ${tokens.access}`;
-      const config = {
-        headers: {
-          Authorization,
-        },
-      };
+      // const tokens = JSON.parse(localStorage.getItem("tokens"));
+      // const Authorization = `Bearer ${tokens.access}`;
+      // const config = {
+      //   headers: {
+      //     Authorization,
+      //   },
+      // };
       const res = await axios(
-        `${API}/hotel/hotels/${window.location.search}`,
-        config
+        `${API}/hotel/hotels/${window.location.search}`
+        // config
       );
       console.log(res);
       dispatch({
@@ -105,14 +105,17 @@ const HotelsContextProvider = ({ children }) => {
 
   async function getOneHotel(id) {
     try {
-      const tokens = JSON.parse(localStorage.getItem("tokens"));
-      const Authorization = `Bearer ${tokens.access}`;
-      const config = {
-        headers: {
-          Authorization,
-        },
-      };
-      const res = await axios(`${API}/hotel/hotels/${id}/`, config);
+      // const tokens = JSON.parse(localStorage.getItem("tokens"));
+      // const Authorization = `Bearer ${tokens.access}`;
+      // const config = {
+      //   headers: {
+      //     Authorization,
+      //   },
+      // };
+      const res = await axios(
+        `${API}/hotel/hotels/${id}/`
+        // config
+      );
       dispatch({
         type: "GET_ONE_HOTEL",
         payload: res.data,

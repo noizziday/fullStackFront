@@ -127,9 +127,9 @@ const HomePage = () => {
                 <div className="innerLine"></div>
               </div>
               <input
-                type="text"
+                type="number"
                 className="reserveInp number"
-                placeholder="Количество"
+                placeholder="Вместимость"
               />
               <div className="privateBtn">Найти</div>
             </div>
