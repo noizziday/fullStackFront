@@ -28,6 +28,13 @@ const HomePage = () => {
 
   let dateSecond = yyyySecond + "-" + mmSecond + "-" + ddSecond;
 
+  let cardsArr = [
+    {
+      name: "Джалал-Абад",
+      value: "",
+    },
+  ];
+
   return (
     <div>
       <Navbar />
@@ -122,7 +129,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="mainContent">Здесь будет основная информация</div>
+        <div className="mainContent"></div>
       </div>
       <Footer />
     </div>
