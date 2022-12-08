@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import HotelCard from "../HotelCard/HotelCard";
+
 import HotelsContextProvider, {
   hotelsContext,
 } from "../../../contexts/HotelsContextProvider";
@@ -22,12 +23,14 @@ const HotelsList = () => {
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
     getHotels();
   }, [location]);
   useEffect(() => {
     getHotels();
   }, []);
+
 
   const { filterHotelsByRegion } = useContext(hotelsContext);
 
@@ -41,6 +44,7 @@ const HotelsList = () => {
   // useEffect(() => {
   //   getHotels();
   // }, [searchParams]);
+
 
   // useEffect(() => {
   //   setSearchParams({
@@ -58,6 +62,7 @@ const HotelsList = () => {
   // console.log(hotels);
 
   return (
+
     <div className="hotelsListBlock">
       <Navbar />
 
@@ -121,6 +126,7 @@ const HotelsList = () => {
 </Pagination> */}
 
       <Footer />
+
     </div>
   );
 };

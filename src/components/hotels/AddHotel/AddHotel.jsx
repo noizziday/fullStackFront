@@ -33,11 +33,13 @@ const AddHotel = () => {
   const [desc, setDesc] = useState("");
   const [desc_list, setDescList] = useState("");
   const [image, setImage] = useState(null);
+
   const [stars, setStars] = useState(1);
   const [region, setRegion] = useState("chuy");
   const [imgOnPage, setImgOnPage] = useState("");
   const [pets, setPets] = useState(true);
   const [food, setFood] = useState(true);
+
 
   function saveHotel() {
     let newProduct = new FormData();
@@ -125,10 +127,12 @@ const AddHotel = () => {
                     return;
                   }
 
+
                   if (!e.target.files.length) {
                     alert("Ничего не загружено");
                     return;
                   }
+
 
                   let fileLoader = new FileReader();
                   fileLoader.onload = () => {

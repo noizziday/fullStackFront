@@ -1,0 +1,38 @@
+#comment-inp {
+  width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  border: solid #002939 2px;
+  color: #002939;
+}
+#comment-panel {
+  margin-top: 20px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.select {
+  margin-left: 20px;
+  width: 200px;
+}
+#staff-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#comfort-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#purity-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#facilities-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

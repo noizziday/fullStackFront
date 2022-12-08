@@ -75,6 +75,11 @@ p {
   border: #002939 solid 2px;
   border-radius: 4px;
 }
+.booking-btn:hover {
+  background-color: #002939;
+  color: #e4cfa9;
+  transition: 0.8s;
+}
 .lux-booking-btn {
   width: 300px;
   height: 50px;
@@ -82,6 +87,11 @@ p {
   color: #002939;
   border: #002939 solid 2px;
   border-radius: 4px;
+}
+.lux-booking-btn:hover {
+  background-color: #002939;
+  color: #e4cfa9;
+  transition: 0.8s;
 }
 .lux {
   margin-top: 150px;
@@ -94,6 +104,22 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+}
+.comment-btn {
+  width: 300px;
+  height: 50px;
+  background-color: #ffff;
+  color: #002939;
+  border: #002939 solid 2px;
+  border-radius: 4px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+}
+
+.comment-btn:hover {
+  background-color: #002939;
+  color: #e4cfa9;
+  transition: 0.8s;
 }
 @media all and (max-width: 1024px) {
   .block-2_number {

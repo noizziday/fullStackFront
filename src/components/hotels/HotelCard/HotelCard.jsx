@@ -16,6 +16,7 @@ const HotelCard = ({ item }) => {
 
   const { deleteHotel } = useContext(hotelsContext);
 
+
   function checkRegion(region) {
     if (region === "chuy") {
       return "Чуйская область";
@@ -73,6 +74,8 @@ const HotelCard = ({ item }) => {
         )}
       </div>
     </div>
+
+  
   );
 };
 

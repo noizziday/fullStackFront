@@ -110,6 +110,7 @@ const Navbar = () => {
                 onClick={() => navigate("/hotel/add")}>
                 Зарегистрировать объект
               </div>
+
             </div>
             <div className="profileDiv">
               <div className="profileDropDown">
