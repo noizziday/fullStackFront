@@ -19,7 +19,7 @@ function reducer(state = INIT_STATE, action) {
       return {
         ...state,
 
-        hotels: action.payload.results,
+        hotels: action.payload,
         pages: Math.ceil(action.payload.count / 3),
       };
 
@@ -37,7 +37,7 @@ const API = "http://34.159.95.125";
 const HotelsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const [hotelsForPages, setHotelsForPages] = useState(0);
+  const [hotelsForPages, setHotelsForPages] = useState(3);
 
   const location = useLocation();
 
@@ -87,10 +87,10 @@ const HotelsContextProvider = ({ children }) => {
         },
       };
       const res = await axios(
-        `${API}/hotel/hotels/
-        `,
+        `${API}/hotel/hotels/${window.location.search}`,
         config
       );
+      console.log(res);
       dispatch({
         type: "GET_HOTELS",
         payload: res.data.results,
@@ -117,6 +117,7 @@ const HotelsContextProvider = ({ children }) => {
         type: "GET_ONE_HOTEL",
         payload: res.data,
       });
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -261,10 +262,10 @@ const HotelsContextProvider = ({ children }) => {
     <hotelsContext.Provider
       value={{
         hotels: state.hotels,
-        // pages: state.pages,
+        pages: state.pages,
         comments: state.comments,
         oneHotel: state.oneHotel,
-        // hotelsForPages,
+        hotelsForPages,
 
         filterHotelsByRegion,
         createHotel,
@@ -274,7 +275,7 @@ const HotelsContextProvider = ({ children }) => {
         updateHotel,
         deleteHotel,
 
-        // setHotelsForPages,
+        setHotelsForPages,
 
         createComment,
         getComments,

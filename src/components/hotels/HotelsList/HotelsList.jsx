@@ -23,14 +23,12 @@ const HotelsList = () => {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
     getHotels();
-  }, [location]);
+  }, [page]);
   useEffect(() => {
     getHotels();
   }, []);
-
 
   const { filterHotelsByRegion } = useContext(hotelsContext);
 
@@ -44,7 +42,6 @@ const HotelsList = () => {
   // useEffect(() => {
   //   getHotels();
   // }, [searchParams]);
-
 
   // useEffect(() => {
   //   setSearchParams({
@@ -62,7 +59,6 @@ const HotelsList = () => {
   // console.log(hotels);
 
   return (
-
     <div className="hotelsListBlock">
       <Navbar />
 
@@ -126,7 +122,6 @@ const HotelsList = () => {
 </Pagination> */}
 
       <Footer />
-
     </div>
   );
 };
