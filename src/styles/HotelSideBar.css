@@ -1,0 +1,62 @@
+.hotelSideBarBlock {
+  width: 100%;
+  background-color: #002939;
+  border-radius: 5px;
+}
+.hotelSideBarBlock {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.hotelSideBarDiv {
+  display: flex;
+  flex-direction: column;
+}
+.hotelSideBarFilterDiv {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  flex-direction: column;
+}
+.hotelSideBarFilterDiv input {
+  width: 100%;
+  width: 90%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  border-color: transparent;
+
+  background: url(https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png)
+    no-repeat scroll 8px 7px;
+  background-size: auto 60%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-left: 38px;
+}
+.hotelSideBarFilterDiv select {
+  width: 100%;
+  width: 90%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  border-color: transparent;
+
+  background: url(http://cdn.onlinewebfonts.com/svg/img_285303.png) no-repeat
+    scroll 8px 4px;
+  background-size: auto 70%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-left: 38px;
+}
+.hotelSideBarFilterDiv select option {
+  background-color: #002939;
+  padding-left: 0;
+  border: none;
+  color: #eee;
+}
+@media (max-width: 1400px) {
+  .hotelSideBarDiv {
+    font-size: 15px;
+  }
+}

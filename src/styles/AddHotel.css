@@ -1,0 +1,165 @@
+/* #e4cfa9 #002939 */
+.addHotelBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #002939;
+}
+.addHotelContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addHotelInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #002939;
+  background-color: #e4cfa9;
+  width: 60vw;
+  height: 90vh;
+  padding: 20px;
+  box-shadow: 0px 0px 15px #e4cfa9;
+  border: 0.5px solid #002939;
+  border-radius: 5px;
+}
+.addHotelInputs input {
+  width: 90%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: 0.5s;
+}
+.addHotelInputs input:hover {
+  transform: scale(1.1);
+}
+.inpStars {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.inpStarsLbl {
+  width: 100%;
+}
+.inpStars input {
+  width: 20%;
+  text-align: center;
+}
+.regionSelectInp {
+  width: 90%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.regionSelectDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.addHotelInputs textarea {
+  width: 90%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.5);
+  resize: none;
+  height: 45%;
+  transition: 0.5s;
+}
+.addHotelInputs textarea:hover {
+  transform: scale(1.1);
+}
+.addHotelInnerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.addHotelInnerDivLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  height: 90%;
+}
+.addHotelInnerDivRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  width: 50%;
+}
+.regionSelectDiv h4 {
+  width: 90%;
+}
+.imgDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c3b498;
+  height: 60%;
+  border-radius: 10px;
+  padding: 5px;
+}
+.addHotelImg {
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.addHotelInnerDivRight button {
+  background-color: #002939;
+  color: #e4cfa9;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  transition: transform 0.5s;
+}
+.addHotelInnerDivRight button:hover {
+  transform: scale(1.1);
+}
+.addHotelImg:hover {
+  transform: scale(1.1);
+}
+.regionSelectDiv select:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+.regionSelectInp option {
+  background-color: #002939;
+  color: #e4cfa9;
+  border: none;
+  padding: 5px;
+}
+.foodDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.foodDiv label {
+  width: 5%;
+}
+.petsDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.petsDiv label {
+  width: 5%;
+}
