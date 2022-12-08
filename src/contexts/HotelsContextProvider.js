@@ -21,7 +21,6 @@ function reducer(state = INIT_STATE, action) {
 
         hotels: action.payload.results,
         pages: Math.ceil(action.payload.count / 3),
-
       };
 
     case "GET_ONE_HOTEL":
@@ -73,7 +72,6 @@ const HotelsContextProvider = ({ children }) => {
       console.log(res);
 
       // getHotels();
-
     } catch (err) {
       console.log(err);
     }
@@ -100,7 +98,6 @@ const HotelsContextProvider = ({ children }) => {
 
       setHotelsForPages(res.data.count);
       console.log(hotelsForPages);
-
     } catch (err) {
       console.log(err);
     }
@@ -181,7 +178,6 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
-
   async function filterHotelsByRegion(query, value, navigate) {
     const search = new URLSearchParams(location.search);
     if (value === "" || value === 0 || value === null) {
@@ -261,7 +257,6 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
-
   return (
     <hotelsContext.Provider
       value={{
@@ -269,7 +264,7 @@ const HotelsContextProvider = ({ children }) => {
         // pages: state.pages,
         comments: state.comments,
         oneHotel: state.oneHotel,
-        hotelsForPages,
+        // hotelsForPages,
 
         filterHotelsByRegion,
         createHotel,
@@ -279,14 +274,13 @@ const HotelsContextProvider = ({ children }) => {
         updateHotel,
         deleteHotel,
 
-        setHotelsForPages,
- 
+        // setHotelsForPages,
+
         createComment,
         getComments,
         deleteComment,
         createLike,
         deleteLike,
-
       }}>
       {children}
     </hotelsContext.Provider>

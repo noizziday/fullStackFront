@@ -4,12 +4,11 @@ import { hotelsContext } from "../../../contexts/HotelsContextProvider";
 import Reviews from "../../Reviews";
 
 const HotelDetails = () => {
-
   const { id } = useParams();
 
   const { getOneHotel, oneHotel, comments, getComments, deleteComment } =
     useContext(hotelsContext);
-  const { id } = useParams();
+
   console.log(comments);
 
   const [open, setOpen] = useState(false);
