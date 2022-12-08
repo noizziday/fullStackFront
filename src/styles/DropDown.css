@@ -6,9 +6,9 @@
   position: absolute;
   background-color: #002939;
   justify-content: space-between;
-  height: 120px;
+  height: 80px;
   transition: visibility 0s, opacity 0.5s linear;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .dropDownMenuBtn {
   color: #e4cfa9;

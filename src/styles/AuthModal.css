@@ -204,7 +204,7 @@
 }
 .regBtn {
   width: 70%;
-  padding: 20px;
+  padding: 7px;
   text-align: center;
   background-color: #e4cfa9;
   border: 1px solid #e4cfa9;
@@ -214,13 +214,12 @@
   cursor: pointer;
 }
 .regBtn:hover {
-  background-color: #002939;
-  border: 1px solid #e4cfa9;
-  color: #e4cfa9;
+  transition: transform 0.5s;
+  transform: scale(1.1);
 }
 .loginBtn {
   width: 70%;
-  padding: 20px;
+  padding: 7px;
   text-align: center;
   background-color: #e4cfa9;
   border: 1px solid #e4cfa9;
@@ -230,7 +229,6 @@
   cursor: pointer;
 }
 .loginBtn:hover {
-  background-color: #002939;
-  border: 1px solid #e4cfa9;
-  color: #e4cfa9;
+  transition: transform 0.5s;
+  transform: scale(1.1);
 }

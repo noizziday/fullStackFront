@@ -1,20 +1,42 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import HotelCard from "../HotelCard/HotelCard";
-import { hotelsContext } from "../../../contexts/HotelsContextProvider";
-import Pagination from "react-bootstrap/Pagination";
+import HotelsContextProvider, {
+  hotelsContext,
+} from "../../../contexts/HotelsContextProvider";
 import Navbar from "../../Navbar";
 import Footer from "../../Footer";
 import "../../../styles/HotelList.css";
+import HotelSideBar from "../HotelSideBar";
+import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
 
 const HotelsList = () => {
-  const { getHotels, hotels } = useContext(hotelsContext);
+  const { getHotels, hotels, hotelsForPages } = useContext(hotelsContext);
   // const [searchParams, setSearchParams] = useSearchParams();
   // const [currentPage, setCurrentPage] = useState(1);
 
+  const [page, setPage] = useState(1);
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getHotels();
+  }, [location]);
   useEffect(() => {
     getHotels();
   }, []);
+
+  const { filterHotelsByRegion } = useContext(hotelsContext);
+
+  const count = Math.ceil(hotelsForPages / 6);
+
+  const handlePage = (e, p) => {
+    setPage(p);
+    filterHotelsByRegion("page", p, navigate);
+  };
 
   // useEffect(() => {
   //   getHotels();
@@ -36,16 +58,48 @@ const HotelsList = () => {
   // console.log(hotels);
 
   return (
-    <div>
+    <div className="hotelsListBlock">
       <Navbar />
+
       <div className="hotelListContainer">
-        <h2>Отели</h2>
+        <div className="hotelListTitle">
+          <h2>Отели</h2>
+        </div>
+        <div className="hotelListDiv">
+          <div className="hotelListSideBarBlock">
+            <HotelSideBar />
+          </div>
+          <div className="hotelListCardBlock">
+            {hotels.length > 0 ? (
+              <>
+                {hotels?.map(item => (
+                  <HotelCard key={item.slug} item={item} />
+                ))}
+                <div className="paginationDiv">
+                  <Pagination
+                    count={count}
+                    page={page}
+                    shape="rounded"
+                    onChange={handlePage}
+                  />
+                </div>
+              </>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "50%",
+                }}>
+                <h5>По указанному запросу отелей нет</h5>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
-        {hotels?.map(item => (
-          <HotelCard key={item.slug} item={item} />
-        ))}
-
-        {/* <Pagination>
+      {/* <Pagination>
   <Pagination.Prev onClick={() => setCurrentPage(currentPage - 1)} />
 
   {getPagesCount().map(item =>
@@ -65,7 +119,7 @@ const HotelsList = () => {
 
   <Pagination.Next onClick={() => setCurrentPage(currentPage + 1)} />
 </Pagination> */}
-      </div>
+
       <Footer />
     </div>
   );

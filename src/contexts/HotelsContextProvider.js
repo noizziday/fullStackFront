@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export const hotelsContext = React.createContext();
 
@@ -32,6 +34,10 @@ const API = "http://34.159.95.125";
 const HotelsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
+  const [hotelsForPages, setHotelsForPages] = useState(0);
+
+  const location = useLocation();
+
   async function createHotel(newHotel, navigate) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -61,7 +67,6 @@ const HotelsContextProvider = ({ children }) => {
       };
       const res = await axios.post(`${API}/room/add-room/`, newRoom, config);
       console.log(res);
-      navigate("/hotels/");
       // getHotels();
     } catch (err) {
       console.log(err);
@@ -77,12 +82,16 @@ const HotelsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/hotel/hotels/`, config);
+      const res = await axios(
+        `${API}/hotel/hotels/${window.location.search}`,
+        config
+      );
       dispatch({
         type: "GET_HOTELS",
         payload: res.data,
       });
-      console.log(res.data);
+      setHotelsForPages(res.data.count);
+      console.log(hotelsForPages);
     } catch (err) {
       console.log(err);
     }
@@ -144,6 +153,18 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
+  async function filterHotelsByRegion(query, value, navigate) {
+    const search = new URLSearchParams(location.search);
+    if (value === "" || value === 0 || value === null) {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+
+    const url = `/hotels/?${search.toString()}`;
+    navigate(url);
+  }
+
   // async function createComment(id, content) {
   //   try {
   //     const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -190,13 +211,16 @@ const HotelsContextProvider = ({ children }) => {
         hotels: state.hotels,
         pages: state.pages,
         oneHotel: state.oneHotel,
+        hotelsForPages,
 
+        filterHotelsByRegion,
         createHotel,
         addRoomToHotel,
         getHotels,
         getOneHotel,
         updateHotel,
         deleteHotel,
+        setHotelsForPages,
         // createComment,
         // deleteComment,
       }}>

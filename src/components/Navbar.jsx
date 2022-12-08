@@ -7,6 +7,11 @@ import { authContext, useAuth } from "../contexts/authContext";
 import "../styles/DropDown.css";
 import useOutsideAlerter from "../custom/useOutside";
 const Navbar = () => {
+  useEffect(() => {
+    if (localStorage.getItem("tokens")) return;
+    localStorage.removeItem("email");
+  }, []);
+
   const {
     handleRegister,
     setError,
@@ -87,81 +92,83 @@ const Navbar = () => {
       {localStorage.email ? (
         <div className="navContainer">
           <div className="navElements">
-            <div className="navElementsLinks" onClick={() => navigate("/")}>
-              Главная
-            </div>
-            <div
-              className="navElementsLinks"
-              onClick={() => navigate("/hotels")}>
-              Отели
-            </div>
-            <div
-              className="navElementsLinks modal-btn"
-              htmlFor="modal-toggle"
-              onClick={() => navigate("/hotel/add")}>
-              Зарегистрировать объект
+            <h2 className="navTitle" onClick={() => navigate("/")}>
+              Booking.com
+            </h2>
+            <div className="navLinksDiv">
+              <div className="navElementsLinks" onClick={() => navigate("/")}>
+                Главная
+              </div>
+              <div
+                className="navElementsLinks"
+                onClick={() => navigate("/hotels")}>
+                Отели
+              </div>
+              <div
+                className="navElementsLinks modal-btn"
+                htmlFor="modal-toggle"
+                onClick={() => navigate("/hotel/add")}>
+                Зарегистрировать объект
+              </div>
             </div>
             <div className="profileDiv">
               <div className="profileDropDown">
                 <div className="profileIcon" onClick={() => setIsShow(true)}>
                   {user?.username[0]}
                 </div>
+              </div>
+              <div
+                className={
+                  isShow ? "dropDownMenu active" : "dropDownMenu inactive"
+                }
+                ref={ref}>
                 <div
-                  className={
-                    isShow ? "dropDownMenu active" : "dropDownMenu inactive"
-                  }
-                  ref={ref}>
-                  <div
-                    className="dropDownMenuBtn"
-                    onClick={() => setDropDown(!dropDown)}>
-                    Профиль
-                  </div>
-                  <div
-                    className="dropDownMenuBtn"
-                    onClick={() => setDropDown(!dropDown)}>
-                    Мой аккаунт
-                  </div>
-                  <div
-                    className="dropDownMenuBtn"
-                    onClick={() => {
-                      setDropDown(!dropDown);
-                      logout();
-                    }}>
-                    Выйти из аккаунта
-                  </div>
+                  className="dropDownMenuBtn"
+                  onClick={() => setDropDown(!dropDown)}>
+                  Вы вошли как <b>{user?.username}</b>
+                </div>
+                <div
+                  className="dropDownMenuBtn"
+                  onClick={() => {
+                    setDropDown(!dropDown);
+                    logout();
+                  }}>
+                  Выйти из аккаунта
                 </div>
               </div>
-              <div className="profileName">{user?.username}</div>
             </div>
           </div>{" "}
         </div>
       ) : (
         <div className="navContainer">
           <div className="navElements">
-            <div className="navElementsLinks" onClick={() => navigate("/")}>
-              Главная
-            </div>
-            <div
-              className="navElementsLinks"
-              onClick={() => navigate("/hotels")}>
-              Отели
-            </div>
-            <div
-              className="navElementsLinks modal-btn"
-              htmlFor="modal-toggle"
-              onClick={() => {
-                setModal(!modal);
-                setInputs(false);
-              }}>
-              Регистрация
-            </div>
-            <div
-              className="navElementsLinks"
-              onClick={() => {
-                setModal(!modal);
-                setInputs(true);
-              }}>
-              Авторизация
+            <h2 className="navTitle">Booking.com</h2>
+            <div className="navLinksDiv">
+              <div className="navElementsLinks" onClick={() => navigate("/")}>
+                Главная
+              </div>
+              <div
+                className="navElementsLinks"
+                onClick={() => navigate("/hotels")}>
+                Отели
+              </div>
+              <div
+                className="navElementsLinks modal-btn"
+                htmlFor="modal-toggle"
+                onClick={() => {
+                  setModal(!modal);
+                  setInputs(false);
+                }}>
+                Регистрация
+              </div>
+              <div
+                className="navElementsLinks"
+                onClick={() => {
+                  setModal(!modal);
+                  setInputs(true);
+                }}>
+                Авторизация
+              </div>
             </div>
           </div>
         </div>
@@ -222,7 +229,6 @@ const Navbar = () => {
                 }}>
                 Вход
               </div>
-              <div className="changeLine"></div>
               <div
                 className="changeToSignUp"
                 onClick={() => {
@@ -286,7 +292,6 @@ const Navbar = () => {
                 }}>
                 Вход
               </div>
-              <div className="changeLine"></div>
               <div
                 className="changeToSignUp"
                 style={{ backgroundColor: "#e4cfa9", color: "#002939" }}

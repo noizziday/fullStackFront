@@ -10,6 +10,7 @@ import PayForm from "./components/PayForm";
 import AddRoom from "./components/hotels/AddRoom/AddRoom";
 import EmailRecovery from "./components/PasswordRecovery/EmailRecovery";
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
+import LoginPage from "./pages/LoginPage";
 
 const MainRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const MainRoutes = () => {
       <Route path="/hotel/add/addroom/:id" element={<AddRoom />} />
       <Route path="/recovery/email/" element={<EmailRecovery />} />
       <Route path="/recovery/email/password" element={<PasswordRecovery />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };
