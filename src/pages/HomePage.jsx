@@ -6,6 +6,12 @@ import "../styles/ForCalendar.css";
 import useOutsideAlerter from "../custom/useOutside";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
 const HomePage = () => {
   const [date, setDate] = useState(new Date());
   const { ref, isShow, setIsShow } = useOutsideAlerter(false);
@@ -130,6 +136,73 @@ const HomePage = () => {
           </div>
         </div>
         <div className="mainContent"></div>
+      </div>
+      <div id="content">
+        <div className="cards">
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="http://34.159.95.125/media/hotel_images/43006880.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Plaza Hotel Bishkek
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                stars: 4 6,000 species, ranging across all continents except
+                Antarctica
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="http://34.159.95.125/media/hotel_images/HayatRegency.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Hayatt Regency
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                stars: 5 6,000 species, ranging across all continents except
+                Antarctica
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="http://34.159.95.125/media/hotel_images/Level.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Level Hotel
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                stars: 4 6,000 species, ranging across all continents except
+                Antarctica
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </div>
       </div>
       <Footer />
     </div>

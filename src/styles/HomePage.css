@@ -137,3 +137,9 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
+.cards {
+  margin: 50px;
+  display: flex;
+  justify-content: space-between;
+}
