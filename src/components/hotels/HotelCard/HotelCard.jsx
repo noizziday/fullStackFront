@@ -61,8 +61,12 @@ const HotelCard = ({ item }) => {
             <button onClick={() => navigate(`/details/${item.slug}`)}>
               Подробнее
             </button>
-            <button onClick={() => navigate(`/edit/${item.slug}`)}>Edit</button>
-            <button onClick={() => deleteHotel(item.slug)}>Delete</button>
+            <button onClick={() => navigate(`/edit/${item.slug}`)}>
+              Редактировать
+            </button>
+            <button onClick={() => deleteHotel(item.slug)}>
+              Удалить объект
+            </button>
           </div>
         ) : (
           <div className="hotelCardBtns">

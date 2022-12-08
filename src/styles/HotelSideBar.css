@@ -55,3 +55,8 @@
   border: none;
   color: #eee;
 }
+@media (max-width: 1400px) {
+  .hotelSideBarDiv {
+    font-size: 15px;
+  }
+}

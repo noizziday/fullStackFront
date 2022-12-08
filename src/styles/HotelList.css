@@ -43,3 +43,12 @@
 .css-10w330c-MuiButtonBase-root-MuiPaginationItem-root {
   color: #e4cfa9;
 }
+@media (max-width: 1400px) {
+  .hotelListContainer {
+    width: 90%;
+  }
+  .hotelListTitle {
+    width: 100%;
+    padding-left: 20px;
+  }
+}
