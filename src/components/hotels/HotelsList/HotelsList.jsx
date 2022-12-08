@@ -63,14 +63,14 @@ const HotelsList = () => {
       <Navbar />
 
       <div className="hotelListContainer">
-        <div className="hotelListTitle">
-          <h2>Отели</h2>
-        </div>
         <div className="hotelListDiv">
           <div className="hotelListSideBarBlock">
             <HotelSideBar />
           </div>
           <div className="hotelListCardBlock">
+            <div className="hotelListTitle">
+              <h2>Отели</h2>
+            </div>
             {hotels.length > 0 ? (
               <>
                 {hotels?.map(item => (

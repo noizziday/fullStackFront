@@ -145,3 +145,13 @@
   background-color: rgba(255, 255, 255, 0.5);
   padding-left: 38px;
 }
+@media (max-width: 1400px) {
+  .emailDiv {
+    width: 20vw;
+    height: 60vh;
+  }
+  .passwordRecoveryDiv {
+    height: 85vh;
+    width: 30vw;
+  }
+}
