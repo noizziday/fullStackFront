@@ -4,6 +4,9 @@ import { hotelsContext } from "../../../contexts/HotelsContextProvider";
 import Reviews from "../../Reviews";
 
 const HotelDetails = () => {
+
+  const { id } = useParams();
+
   const { getOneHotel, oneHotel, comments, getComments, deleteComment } =
     useContext(hotelsContext);
   const { id } = useParams();
@@ -13,6 +16,7 @@ const HotelDetails = () => {
   useEffect(() => {
     getComments();
   }, []);
+
   return (
     <>
       <div className="block-1" style={{ color: "#002939" }}>

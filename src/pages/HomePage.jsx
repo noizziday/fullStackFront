@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/HomePage.css";
 import "../styles/AuthModal.css";
 import Calendar from "react-calendar";
 import "../styles/ForCalendar.css";
-
+import useOutsideAlerter from "../custom/useOutside";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 const HomePage = () => {
   const [date, setDate] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  const { ref, isShow, setIsShow } = useOutsideAlerter(false);
 
   let yyyyFirst = date[0]?.getFullYear();
   let mmFirst = date[0]?.getMonth() + 1;
@@ -15,7 +17,7 @@ const HomePage = () => {
   if (ddFirst < 10) ddFirst = "0" + ddFirst;
   if (mmFirst < 10) mmFirst = "0" + mmFirst;
 
-  let dateFirst = ddFirst + "/" + mmFirst + "/" + yyyyFirst;
+  let dateFirst = yyyyFirst + "-" + mmFirst + "-" + ddFirst;
 
   let yyyySecond = date[1]?.getFullYear();
   let mmSecond = date[1]?.getMonth() + 1;
@@ -24,10 +26,11 @@ const HomePage = () => {
   if (ddSecond < 10) ddSecond = "0" + ddSecond;
   if (mmSecond < 10) mmSecond = "0" + mmSecond;
 
-  let dateSecond = ddSecond + "/" + mmSecond + "/" + yyyySecond;
+  let dateSecond = yyyySecond + "-" + mmSecond + "-" + ddSecond;
 
   return (
     <div>
+      <Navbar />
       <div>
         {/* <div className="imgDiv">
             <img
@@ -58,10 +61,10 @@ const HomePage = () => {
                     className="reserveInp dates1"
                     placeholder="Заезд"
                     onClick={() => {
-                      setShowCalendar(!showCalendar);
+                      setIsShow(true);
                     }}
                     value={
-                      dateFirst == undefined + "/" + NaN + "/" + undefined
+                      dateFirst == undefined + "-" + NaN + "-" + undefined
                         ? "Заезд"
                         : dateFirst
                     }
@@ -74,18 +77,18 @@ const HomePage = () => {
                     className="reserveInp dates2"
                     placeholder="Отъезд"
                     onClick={() => {
-                      setShowCalendar(!showCalendar);
+                      setIsShow(true);
                     }}
                     value={
-                      dateSecond == undefined + "/" + NaN + "/" + undefined
+                      dateSecond == undefined + "-" + NaN + "-" + undefined
                         ? "Отъезд"
                         : dateSecond
                     }
                   />
                 </div>
-                {showCalendar ? (
+                {isShow ? (
                   <div className="app">
-                    <div className="calendar-container">
+                    <div className="calendar-container" ref={ref}>
                       <Calendar
                         onChange={setDate}
                         value={date}
@@ -115,12 +118,13 @@ const HomePage = () => {
                 className="reserveInp number"
                 placeholder="Количество"
               />
-              <div className="privateBtn">Забронировать</div>
+              <div className="privateBtn">Найти</div>
             </div>
           </div>
         </div>
         <div className="mainContent">Здесь будет основная информация</div>
       </div>
+      <Footer />
     </div>
   );
 };

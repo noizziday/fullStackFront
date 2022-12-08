@@ -34,10 +34,11 @@
 .profileDiv {
   display: flex;
   justify-content: space-between;
-  width: 30%;
-  background-color: rgba(255, 255, 255, 0.5);
+  flex-direction: column;
+  gap: 20px;
+  width: min(25%-5px, 1000px);
   padding: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .profileIcon {
   border: 1px solid #e4cfa9;
@@ -54,9 +55,30 @@
 }
 .profileName {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: #e4cfa9;
   font-weight: bold;
-  width: 75%;
+  width: min(50%-10px, 40);
+  margin-inline: auto;
+}
+.forgottPassword {
+  color: #e4cfa9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.forgottPassword:hover {
+  color: white;
+}
+.navTitle {
+  color: #e4cfa9;
+  cursor: pointer;
+  font-weight: bold;
+}
+.navLinksDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  transition: 1s;
 }

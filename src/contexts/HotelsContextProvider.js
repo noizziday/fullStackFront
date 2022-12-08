@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export const hotelsContext = React.createContext();
 
@@ -16,8 +18,10 @@ function reducer(state = INIT_STATE, action) {
     case "GET_HOTELS":
       return {
         ...state,
-        hotels: action.payload,
-        // pages: Math.ceil(action.payload.count / 3),
+
+        hotels: action.payload.results,
+        pages: Math.ceil(action.payload.count / 3),
+
       };
 
     case "GET_ONE_HOTEL":
@@ -34,6 +38,10 @@ const API = "http://34.159.95.125";
 const HotelsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
+  const [hotelsForPages, setHotelsForPages] = useState(0);
+
+  const location = useLocation();
+
   async function createHotel(newHotel, navigate) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -44,9 +52,28 @@ const HotelsContextProvider = ({ children }) => {
         },
       };
       const res = await axios.post(`${API}/hotel/hotels/`, newHotel, config);
+      console.log(res.data.slug);
+      navigate(`/hotel/add/addroom/${res.data.slug}`);
+      // getHotels();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function addRoomToHotel(newRoom, navigate) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(`${API}/room/add-room/`, newRoom, config);
       console.log(res);
-      navigate("/hotels");
-      getHotels();
+
+      // getHotels();
+
     } catch (err) {
       console.log(err);
     }
@@ -70,7 +97,10 @@ const HotelsContextProvider = ({ children }) => {
         type: "GET_HOTELS",
         payload: res.data.results,
       });
-      console.log(res);
+
+      setHotelsForPages(res.data.count);
+      console.log(hotelsForPages);
+
     } catch (err) {
       console.log(err);
     }
@@ -128,7 +158,7 @@ const HotelsContextProvider = ({ children }) => {
         editedHotel,
         config
       );
-      navigate("/hotel/hotels");
+      navigate("/hotels/");
       getHotels();
     } catch (err) {
       console.log(err);
@@ -149,6 +179,19 @@ const HotelsContextProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+  }
+
+
+  async function filterHotelsByRegion(query, value, navigate) {
+    const search = new URLSearchParams(location.search);
+    if (value === "" || value === 0 || value === null) {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+
+    const url = `/hotels/?${search.toString()}`;
+    navigate(url);
   }
 
   async function createComment(id, content) {
@@ -218,6 +261,7 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
+
   return (
     <hotelsContext.Provider
       value={{
@@ -225,17 +269,24 @@ const HotelsContextProvider = ({ children }) => {
         // pages: state.pages,
         comments: state.comments,
         oneHotel: state.oneHotel,
+        hotelsForPages,
 
+        filterHotelsByRegion,
         createHotel,
+        addRoomToHotel,
         getHotels,
         getOneHotel,
         updateHotel,
         deleteHotel,
+
+        setHotelsForPages,
+ 
         createComment,
         getComments,
         deleteComment,
         createLike,
         deleteLike,
+
       }}>
       {children}
     </hotelsContext.Provider>

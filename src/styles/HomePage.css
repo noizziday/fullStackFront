@@ -17,10 +17,10 @@
   justify-content: center;
   width: 100%;
   background: url(https://s01.cdn-pegast.net/get/f8/d9/a7/f011c31de122ffc06d653b57bc8e52fbba7a6a9a9da99c96f18d337db0/5c3dec186770c.jpg);
-  height: 800px;
+  height: 80vh;
 }
 .welcomeInner {
-  margin-top: 140px;
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
