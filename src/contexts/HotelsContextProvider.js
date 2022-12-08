@@ -187,6 +187,37 @@ const HotelsContextProvider = ({ children }) => {
     }
   }
 
+  async function createLike(id) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(`${API}/comment/like/${id}/`, config);
+      getComments(id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function deleteLike(id) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.delete(`${API}/comment/like/${id}/`, config);
+      getComments(id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <hotelsContext.Provider
       value={{
@@ -203,6 +234,8 @@ const HotelsContextProvider = ({ children }) => {
         createComment,
         getComments,
         deleteComment,
+        createLike,
+        deleteLike,
       }}>
       {children}
     </hotelsContext.Provider>
