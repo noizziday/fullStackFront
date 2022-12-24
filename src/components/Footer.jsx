@@ -7,22 +7,17 @@ const Footer = () => {
       <div className="footerBlockContent">
         <div className="footerContentInfo">
           <div className="footerContentInfoLeft">
-            <div className="footerLeftElement">Отель</div>
-            <div className="footerLeftElement">Номера</div>
-            <div className="footerLeftElement">Ресторан</div>
-            <div className="footerLeftElement">Мероприятия</div>
-            <div className="footerLeftElement">Акции</div>
-            <div className="footerLeftElement">Услуги</div>
+            <div className="footerLeftElement">Home</div>
+            <div className="footerLeftElement">Booking</div>
           </div>
           <div className="footerContentInfoRight">
-            <div className="footerRightElement">Luxury Grand Town Hotel</div>
-            <div className="footerRightElement">Anna Van Den Vondel</div>
+            <div className="footerRightElement">BOOKING.alatoo</div>
+
             <div className="footerRightElement">
-              Anna Van Den Vondelstroot 6
+              International Ala-Too Univercity
             </div>
-            <div className="footerRightElement">1054 QZ Amsterdam</div>
             <div className="footerRightElement">+996 777 77 77 77</div>
-            <div className="footerRightElement">GrandTownHotel@gmail.com</div>
+            <div className="footerRightElement">alatoo@gmail.com</div>
           </div>
         </div>
         <div className="footerEmail">
